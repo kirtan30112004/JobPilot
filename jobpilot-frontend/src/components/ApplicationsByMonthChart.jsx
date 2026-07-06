@@ -5,7 +5,7 @@ import {
 import analyticsService from '../services/analyticsService'
 import { SectionLoader } from './Loader'
 import EmptyState from './EmptyState'
-import { CalendarIcon, AlertCircleIcon, TrendingUpIcon, TrendingDownIcon } from './icons'
+import { CalendarIcon, AlertCircleIcon, TrendingUpIcon, TrendingDownIcon } from './Icons'
 
 // ── Theme constants (mirror tailwind.config.js palette) ────────
 const LINE_COLOR = '#8B5CF6' // violet-500
