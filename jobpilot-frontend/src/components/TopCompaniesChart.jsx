@@ -5,7 +5,7 @@ import {
 import analyticsService from '../services/analyticsService'
 import { SectionLoader } from './Loader'
 import EmptyState from './EmptyState'
-import { AwardIcon, AlertCircleIcon } from './icons'
+import { AwardIcon, AlertCircleIcon } from './Icons'
 
 const TOP_N = 5
 

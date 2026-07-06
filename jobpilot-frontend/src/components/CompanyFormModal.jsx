@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import { ButtonSpinner } from './Loader'
-import { AlertCircleIcon, PlusIcon, TrashIcon } from './icons'
+import { AlertCircleIcon, PlusIcon, TrashIcon } from './Icons'
 import { COMPANY_SIZES } from '../utils/constants'
 import { validateCompany, validateRecruiterEmail } from '../utils/validators'
 import { isValidURL } from '../utils/validationUtils'

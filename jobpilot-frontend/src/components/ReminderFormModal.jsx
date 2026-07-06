@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import { ButtonSpinner } from './Loader'
-import { AlertCircleIcon } from './icons'
+import { AlertCircleIcon } from './Icons'
 import { REMINDER_TYPES, PRIORITIES } from '../utils/constants'
 import { toDateTimeLocal } from '../utils/format'
 import { validateReminder } from '../utils/validators'

@@ -5,7 +5,7 @@ import Badge from './Badge'
 import {
   BellIcon, EditIcon, TrashIcon, PlusIcon, CheckCircleIcon, CircleIcon,
   BriefcaseIcon, ClockIcon,
-} from './icons'
+} from './Icons'
 import { REMINDER_TYPE_COLORS, PRIORITY_COLORS } from '../utils/constants'
 import { formatDate, isOverdue, isUpcoming } from '../utils/format'
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import { ButtonSpinner } from './Loader'
-import { AlertCircleIcon } from './icons'
+import { AlertCircleIcon } from './Icons'
 import {
   JOB_STATUSES, JOB_TYPES, PRIORITIES, CURRENCIES,
 } from '../utils/constants'

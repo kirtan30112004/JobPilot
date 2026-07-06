@@ -4,7 +4,7 @@ import EmptyState from './EmptyState'
 import Badge from './Badge'
 import {
   BriefcaseIcon, EditIcon, TrashIcon, ExternalLinkIcon, MapPinIcon, PlusIcon,
-} from './icons'
+} from './Icons'
 import { JOB_STATUS_COLORS, PRIORITY_COLORS } from '../utils/constants'
 import { formatDate, formatSalary } from '../utils/format'
 

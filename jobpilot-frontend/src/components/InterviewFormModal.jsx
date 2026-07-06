@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import { ButtonSpinner } from './Loader'
-import { AlertCircleIcon, PlusIcon, TrashIcon, StarIcon } from './icons'
+import { AlertCircleIcon, PlusIcon, TrashIcon, StarIcon } from './Icons'
 import {
   INTERVIEW_TYPES, INTERVIEW_STATUSES, INTERVIEW_MODES,
 } from '../utils/constants'

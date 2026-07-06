@@ -5,7 +5,7 @@ import Badge from './Badge'
 import {
   CalendarIcon, EditIcon, TrashIcon, PlusIcon, ClockIcon,
   VideoIcon, MapPinIcon, PhoneIcon, StarIcon, BriefcaseIcon,
-} from './icons'
+} from './Icons'
 import { INTERVIEW_STATUS_COLORS } from '../utils/constants'
 import { formatDateTime } from '../utils/format'
 

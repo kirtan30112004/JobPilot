@@ -3,7 +3,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
 import analyticsService from '../services/analyticsService'
 import { SectionLoader } from './Loader'
 import EmptyState from './EmptyState'
-import { AwardIcon, AlertCircleIcon } from './icons'
+import { AwardIcon, AlertCircleIcon } from './Icons'
 
 // ── Theme constants (mirror tailwind.config.js palette) ──────────
 const OFFER_COLOR = '#10B981'    // emerald-500

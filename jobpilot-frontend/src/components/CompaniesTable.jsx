@@ -5,7 +5,7 @@ import Badge from './Badge'
 import {
   BuildingIcon, EditIcon, TrashIcon, ExternalLinkIcon, MapPinIcon, PlusIcon,
   EyeIcon, Users2Icon, BriefcaseIcon,
-} from './icons'
+} from './Icons'
 
 /**
  * CompaniesTable — responsive table of companies.

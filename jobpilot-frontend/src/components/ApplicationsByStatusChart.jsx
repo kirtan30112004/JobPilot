@@ -3,7 +3,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
 import analyticsService from '../services/analyticsService'
 import { SectionLoader } from './Loader'
 import EmptyState from './EmptyState'
-import { BriefcaseIcon, AlertCircleIcon } from './icons'
+import { BriefcaseIcon, AlertCircleIcon } from './Icons'
 import { JOB_STATUSES } from '../utils/constants'
 
 // ── Status color palette (hex, for Recharts fill values) ────────

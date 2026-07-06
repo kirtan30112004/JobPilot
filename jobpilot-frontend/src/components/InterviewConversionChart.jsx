@@ -5,7 +5,7 @@ import {
 import analyticsService from '../services/analyticsService'
 import { SectionLoader } from './Loader'
 import EmptyState from './EmptyState'
-import { TrendingUpIcon, AlertCircleIcon, BriefcaseIcon } from './icons'
+import { TrendingUpIcon, AlertCircleIcon, BriefcaseIcon } from './Icons'
 
 // ── Theme constants (mirror tailwind.config.js palette) ──────────
 const GRID_COLOR = '#1E293B' // slate-800
