@@ -6,7 +6,7 @@ import InterviewFormModal from '../components/InterviewFormModal'
 import FilterBar from '../components/FilterBar'
 import Pagination from '../components/Pagination'
 import ConfirmDialog from '../components/ConfirmDialog'
-import { PlusIcon, AlertCircleIcon, CalendarIcon } from '../components/icons'
+import { PlusIcon, AlertCircleIcon, CalendarIcon } from '../components/Icons'
 import { INTERVIEW_TYPES, INTERVIEW_STATUSES } from '../utils/constants'
 import { showSuccess, showError, showDeleteSuccess } from '../utils/toast'
 

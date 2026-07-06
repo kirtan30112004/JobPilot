@@ -6,7 +6,7 @@ import ReminderFormModal from '../components/ReminderFormModal'
 import FilterBar from '../components/FilterBar'
 import Pagination from '../components/Pagination'
 import ConfirmDialog from '../components/ConfirmDialog'
-import { PlusIcon, AlertCircleIcon, BellIcon, ClockIcon } from '../components/icons'
+import { PlusIcon, AlertCircleIcon, BellIcon, ClockIcon } from '../components/Icons'
 import { REMINDER_TYPES, PRIORITIES } from '../utils/constants'
 import { showSuccess, showError, showDeleteSuccess } from '../utils/toast'
 

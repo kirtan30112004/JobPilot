@@ -7,7 +7,7 @@ import SearchBar from '../components/SearchBar'
 import FilterBar from '../components/FilterBar'
 import Pagination from '../components/Pagination'
 import ConfirmDialog from '../components/ConfirmDialog'
-import { PlusIcon, AlertCircleIcon } from '../components/icons'
+import { PlusIcon, AlertCircleIcon } from '../components/Icons'
 import { JOB_STATUSES, JOB_TYPES, PRIORITIES } from '../utils/constants'
 import { showSuccess, showError, showDeleteSuccess } from '../utils/toast'
 

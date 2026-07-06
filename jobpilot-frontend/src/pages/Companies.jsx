@@ -11,7 +11,7 @@ import { SectionLoader } from '../components/Loader'
 import {
   PlusIcon, AlertCircleIcon, EditIcon, ExternalLinkIcon, MapPinIcon,
   BriefcaseIcon, Users2Icon, UserIcon,
-} from '../components/icons'
+} from '../components/Icons'
 import { showSuccess, showError, showDeleteSuccess } from '../utils/toast'
 
 const LIMIT = 10
