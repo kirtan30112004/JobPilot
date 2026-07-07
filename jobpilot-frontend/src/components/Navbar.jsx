@@ -147,14 +147,14 @@ function Navbar({ onMenuClick }) {
                     </div>
 
                     <div className="py-1">
-                      <Link
+                      {/* <Link
                         to="/profile"
                         onClick={() => setDropdownOpen(false)}
                         className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 hover:text-slate-100 hover:bg-slate-700/50 transition-colors"
                       >
                         <UserIcon />
                         Profile
-                      </Link>
+                      </Link> */}
                       <button
                         onClick={handleLogout}
                         className="w-full flex items-center gap-3 px-4 py-2 text-sm text-rose-400 hover:text-rose-300 hover:bg-slate-700/50 transition-colors"

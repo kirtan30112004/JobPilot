@@ -132,7 +132,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
-      <Route
+      {/* <Route
         path="/profile"
         element={
           <ProtectedRoute>
@@ -141,7 +141,7 @@ function AppRoutes() {
             </AppLayout>
           </ProtectedRoute>
         }
-      />
+      /> */}
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
