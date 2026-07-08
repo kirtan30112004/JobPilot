@@ -1,17 +1,18 @@
-const asyncHandler = (fn) => (req, res, next) =>
-  Promise.resolve(fn(req, res, next)).catch(next);
+'use strict';
+
+const asyncHandler = require('express-async-handler');
 const User = require('../models/User');
 const { generateToken, setTokenCookie } = require('../utils/generateToken');
+const { seedUser } = require('../seed/seedUser');
 
 /**
- * @desc    Register a new user
+ * @desc    Register a new user and seed demo data
  * @route   POST /api/auth/register
  * @access  Public
  */
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  // Check if user already exists
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -19,45 +20,49 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('User already exists with this email');
   }
 
-  // Create new user (password hashing handled by pre-save hook in model)
-  const user = await User.create({
-    name,
-    email,
-    password,
-  });
+  const user = await User.create({ name, email, password });
 
-  if (user) {
-    const token = generateToken(user._id);
-    setTokenCookie(res, token);
-
-    res.status(201).json({
-      success: true,
-      message: 'User registered successfully',
-      data: {
-        user: {
-          _id: user._id,
-          name: user.name,
-          email: user.email,
-          createdAt: user.createdAt,
-        },
-        token,
-      },
-    });
-  } else {
+  if (!user) {
     res.status(400);
     throw new Error('Invalid user data');
   }
+
+  // Seed demo data for the new user.
+  // If seeding fails the error propagates to the global error handler
+  // and the registration response is not sent, giving the client a
+  // clear 500 rather than a partial success. The created User document
+  // will persist (it was already committed outside a transaction here),
+  // but because the uniqueness constraint on email prevents duplicate
+  // registrations, a retry from the client will hit the "already exists"
+  // branch and the developer can re-run seedUser manually if needed.
+  await seedUser(user._id);
+
+  const token = generateToken(user._id);
+  setTokenCookie(res, token);
+
+  res.status(201).json({
+    success: true,
+    message: 'User registered successfully',
+    data: {
+      user: {
+        _id:       user._id,
+        name:      user.name,
+        email:     user.email,
+        createdAt: user.createdAt,
+      },
+      token,
+    },
+  });
 });
 
 /**
- * @desc    Authenticate user & get token
+ * @desc    Authenticate user and return token
  * @route   POST /api/auth/login
  * @access  Public
  */
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  // Find user and explicitly include password field
   const user = await User.findOne({ email }).select('+password');
 
   if (!user) {
@@ -65,7 +70,6 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid email or password');
   }
 
-  // Compare entered password with stored hashed password
   const isMatch = await user.matchPassword(password);
 
   if (!isMatch) {
@@ -81,9 +85,9 @@ const loginUser = asyncHandler(async (req, res) => {
     message: 'Login successful',
     data: {
       user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
+        _id:       user._id,
+        name:      user.name,
+        email:     user.email,
         createdAt: user.createdAt,
       },
       token,
@@ -92,12 +96,11 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 /**
- * @desc    Get current logged-in user profile
+ * @desc    Get current authenticated user
  * @route   GET /api/auth/me
  * @access  Private
  */
 const getMe = asyncHandler(async (req, res) => {
-  // req.user is set by the protect middleware
   const user = await User.findById(req.user._id);
 
   if (!user) {
@@ -109,9 +112,9 @@ const getMe = asyncHandler(async (req, res) => {
     success: true,
     data: {
       user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
+        _id:       user._id,
+        name:      user.name,
+        email:     user.email,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
       },
@@ -120,14 +123,14 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 /**
- * @desc    Logout user / clear cookie
+ * @desc    Log out the current user
  * @route   POST /api/auth/logout
  * @access  Private
  */
 const logoutUser = asyncHandler(async (req, res) => {
   res.cookie('jwt', '', {
     httpOnly: true,
-    expires: new Date(0),
+    expires:  new Date(0),
   });
 
   res.status(200).json({
@@ -136,9 +139,4 @@ const logoutUser = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  registerUser,
-  loginUser,
-  getMe,
-  logoutUser,
-};
+module.exports = { registerUser, loginUser, getMe, logoutUser };
