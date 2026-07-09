@@ -195,7 +195,7 @@ function Register() {
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="Jane Smith"
+                placeholder="Your Name"
                 className={`field ${touched.name && errors.name ? 'field-error' : ''}`}
                 disabled={isSubmitting}
               />
@@ -215,7 +215,7 @@ function Register() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="you@example.com"
+                placeholder="you@gmail.com"
                 className={`field ${touched.email && errors.email ? 'field-error' : ''}`}
                 disabled={isSubmitting}
               />

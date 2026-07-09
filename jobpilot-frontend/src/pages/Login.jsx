@@ -190,7 +190,7 @@ function Login() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                placeholder="you@example.com"
+                placeholder="you@gmail.com"
                 className={`field ${touched.email && errors.email ? 'field-error' : ''}`}
                 disabled={isSubmitting}
               />
