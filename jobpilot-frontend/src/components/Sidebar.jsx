@@ -54,14 +54,14 @@ function PilotStarIcon() {
     </svg>
   )
 }
-function PlusIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="12" y1="5" x2="12" y2="19"/>
-      <line x1="5" y1="12" x2="19" y2="12"/>
-    </svg>
-  )
-}
+// function PlusIcon() {
+//   return (
+//     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+//       <line x1="12" y1="5" x2="12" y2="19"/>
+//       <line x1="5" y1="12" x2="19" y2="12"/>
+//     </svg>
+//   )
+// }
 function XIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -104,14 +104,14 @@ function SidebarContent({ onNavigate }) {
   return (
     <div className="flex flex-col h-full px-4 py-6">
       {/* Quick action */}
-      <Link
+      {/* <Link
         to="/jobs?new=1"
         onClick={onNavigate}
         className="btn-primary w-full mb-6 text-sm py-2.5"
       >
         <PlusIcon />
         Add application
-      </Link>
+      </Link> */}
 
       {/* Nav links */}
       <nav className="space-y-1 flex-1">
@@ -148,14 +148,14 @@ function SidebarContent({ onNavigate }) {
 function RailContent() {
   return (
     <div className="flex flex-col items-center h-full py-6">
-      <Link
+      {/* <Link
         to="/jobs?new=1"
         className="w-11 h-11 rounded-xl bg-violet-600 hover:bg-violet-500 flex items-center justify-center text-white shadow-glow-violet transition-colors mb-6 shrink-0"
         title="Add application"
         aria-label="Add application"
       >
         <PlusIcon />
-      </Link>
+      </Link> */}
 
       <nav className="flex flex-col items-center gap-1.5 flex-1">
         {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
