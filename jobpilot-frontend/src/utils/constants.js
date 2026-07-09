@@ -30,9 +30,9 @@ export const CURRENCIES = ['USD', 'EUR', 'GBP', 'INR']
 // NOTE: { text, bg } objects — passed directly as the `colors` prop to
 // <Badge> in RemindersTable.jsx (no splitColorClasses involved there).
 export const PRIORITY_COLORS = {
-  Low:    { text: 'text-slate-400',  bg: 'bg-slate-500/15'  },
-  Medium: { text: 'text-amber-300',  bg: 'bg-amber-500/15'  },
-  High:   { text: 'text-rose-300',   bg: 'bg-rose-500/15'   },
+  Low: 'bg-slate-500/15 text-slate-400',
+  Medium: 'bg-amber-500/15 text-amber-300',
+  High: 'bg-rose-500/15 text-rose-300',
 }
 
 // ── Company ──────────────────────────────────────────────────
