@@ -1,39 +1,25 @@
-<div align="center">
+# 🚀 JobPilot – Job Application Tracker
 
-  <img src="https://img.shields.io/badge/JobPilot-Job%20Application%20Tracker-7c3aed?style=for-the-badge&logo=target&logoColor=white" alt="JobPilot" />
+**JobPilot** is a full-stack MERN application designed to help job seekers organize and manage every stage of their job search—from submitting applications to receiving offers.
 
-  <br />
-  <br />
+It provides an intuitive dashboard to track applications, companies, interviews, reminders, and job search progress, all in one place.
 
-  <p align="center">
-    A full-stack MERN application to track every step of your job search —
-    from application to offer.
-  </p>
+### 🌐 Live Demo
+https://jobpilot-beige.vercel.app/
 
-  <p align="center">
-    <a href="https://jobpilot-demo.vercel.app" target="_blank">
-      <img src="https://img.shields.io/badge/Live%20Demo-View%20App-7c3aed?style=for-the-badge&logo=vercel&logoColor=white" />
-    </a>
-    &nbsp;
-    <img src="https://img.shields.io/badge/License-MIT-22d3ee?style=for-the-badge" />
-    &nbsp;
-    <img src="https://img.shields.io/badge/PRs-Welcome-10b981?style=for-the-badge" />
-  </p>
+---
 
-  <br />
+## 🛠️ Tech Stack
 
-  <p align="center">
-    <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white" />
-    <img src="https://img.shields.io/badge/Node.js-20-339933?style=flat-square&logo=node.js&logoColor=white" />
-    <img src="https://img.shields.io/badge/Express.js-4-000000?style=flat-square&logo=express&logoColor=white" />
-    <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white" />
-    <img src="https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
-    <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white" />
-    <img src="https://img.shields.io/badge/JWT-Auth-F7B500?style=flat-square&logo=jsonwebtokens&logoColor=white" />
-    <img src="https://img.shields.io/badge/Deployed%20on-Render%20%2B%20Vercel-7c3aed?style=flat-square&logo=render&logoColor=white" />
-  </p>
+- **Frontend:** React 18, Vite, Tailwind CSS v4
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Authentication:** JWT Authentication
+- **Deployment:** Vercel (Frontend) + Render (Backend)
 
-</div>
+---
+
+> Built to simplify job application management with a modern, responsive, and user-friendly interface.
 
 ---
 
