@@ -379,80 +379,65 @@ function buildReminders(userId, jobs, _interviews) {
   ];
 }
 
-/* ── Insert helpers ───────────────────────────────────────────── */
 
-async function insertMany(Model, docs, session) {
-  return Model.insertMany(docs, { session, ordered: true });
-}
-
-async function clearExistingSeeds(userId, session) {
+async function clearExistingSeeds(userId) {
   await Promise.all([
-    Company.deleteMany(  { user: userId }, { session }),
-    Job.deleteMany(      { user: userId }, { session }),
-    Interview.deleteMany({ user: userId }, { session }),
-    Reminder.deleteMany( { user: userId }, { session }),
+    Company.deleteMany({ user: userId }),
+    Job.deleteMany({ user: userId }),
+    Interview.deleteMany({ user: userId }),
+    Reminder.deleteMany({ user: userId }),
   ]);
 }
 
 /* ── Main exported function ───────────────────────────────────── */
 
-/**
- * Seeds a complete, self-consistent set of demo data for one user.
- * Idempotent — re-running replaces the previous seed.
- * All writes occur inside a single MongoDB transaction; any failure
- * triggers a full rollback.
- *
- * @param {string|mongoose.Types.ObjectId} userId
- * @returns {Promise<{
- *   companies:    object[],
- *   jobs:         object[],
- *   interviews:   object[],
- *   reminders:    object[],
- *   companyMap:   Map<string, object>,
- *   jobMap:       Map<string, object>,
- *   interviewMap: Map<string, object>,
- * }>}
- */
 async function seedUser(userId) {
-  const userObjectId = userId instanceof mongoose.Types.ObjectId
-    ? userId
-    : new mongoose.Types.ObjectId(String(userId));
-
-  const session = await mongoose.startSession();
-  session.startTransaction();
+  const userObjectId =
+    userId instanceof mongoose.Types.ObjectId
+      ? userId
+      : new mongoose.Types.ObjectId(String(userId));
 
   try {
-    await clearExistingSeeds(userObjectId, session);
+    console.log("Clearing existing seed data...");
+    await clearExistingSeeds(userObjectId);
 
+    console.log("Seeding companies...");
     const companyDocs = buildCompanies(userObjectId);
-    const companies   = await insertMany(Company, companyDocs, session);
-    const companyMap  = new Map(companies.map((c) => [c.name, c]));
+    const companies = await Company.insertMany(companyDocs);
+    const companyMap = new Map(companies.map((c) => [c.name, c]));
 
+    console.log("Seeding jobs...");
     const jobDocs = buildJobs(userObjectId, companies);
-    const jobs    = await insertMany(Job, jobDocs, session);
-    const jobMap  = new Map(jobs.map((j) => [j.jobTitle, j]));
+    const jobs = await Job.insertMany(jobDocs);
+    const jobMap = new Map(jobs.map((j) => [j.jobTitle, j]));
 
+    console.log("Seeding interviews...");
     const interviewDocs = buildInterviews(userObjectId, jobs);
-    const interviews    = interviewDocs.length
-      ? await insertMany(Interview, interviewDocs, session)
+    const interviews = interviewDocs.length
+      ? await Interview.insertMany(interviewDocs)
       : [];
-    const interviewMap  = new Map(interviews.map((i) => [i.title, i]));
+    const interviewMap = new Map(interviews.map((i) => [i.title, i]));
 
+    console.log("Seeding reminders...");
     const reminderDocs = buildReminders(userObjectId, jobs, interviews);
-    const reminders    = reminderDocs.length
-      ? await insertMany(Reminder, reminderDocs, session)
+    const reminders = reminderDocs.length
+      ? await Reminder.insertMany(reminderDocs)
       : [];
 
-    await session.commitTransaction();
+    console.log("Seed completed successfully!");
 
-    return { companies, jobs, interviews, reminders, companyMap, jobMap, interviewMap };
-
+    return {
+      companies,
+      jobs,
+      interviews,
+      reminders,
+      companyMap,
+      jobMap,
+      interviewMap,
+    };
   } catch (error) {
-    await session.abortTransaction();
+    console.error("Seed Error:", error);
     throw error;
-
-  } finally {
-    session.endSession();
   }
 }
 

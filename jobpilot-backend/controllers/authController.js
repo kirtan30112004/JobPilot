@@ -35,7 +35,9 @@ const registerUser = asyncHandler(async (req, res) => {
   // but because the uniqueness constraint on email prevents duplicate
   // registrations, a retry from the client will hit the "already exists"
   // branch and the developer can re-run seedUser manually if needed.
+  console.log("========== SEED START ==========");
   await seedUser(user._id);
+  console.log("========== SEED END ==========");
 
   const token = generateToken(user._id);
   setTokenCookie(res, token);
